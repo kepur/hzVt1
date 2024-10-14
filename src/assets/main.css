@@ -76,3 +76,54 @@ body {
 .loginleft .el-button {
   font-size: 10px;
 }
+.login-item .el-input {
+  margin-top: 20px;
+}
+.login-item .el-input__wrapper {
+  padding: 7px;
+}
+.login-item .el-button {
+  width: 100%;
+  margin-top: 20px;
+}
+/* 登录按钮 */
+
+.otherwise-title {
+  margin-top: 20px;
+  color: #9198a4;
+  font-size: 14px;
+}
+.otherwise-title::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 200px;
+  height: 1px;
+  background-color: #eee;
+}
+.otherwise-title::after {
+  content: '';
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 200px;
+  height: 1px;
+  background-color: #eee;
+}
+.otherwise ul {
+  display: flex;
+  margin: auto;
+  justify-content: space-between;
+  padding-top: 20px;
+  list-style: none;
+  padding-inline-start: 0px;
+  width: 180px;
+  text-align: center;
+}
+.otherwise ul li svg {
+  width: 30px;
+  background-color: #f6f6f8;
+  border-radius: 50%;
+  padding: 5px;
+}
