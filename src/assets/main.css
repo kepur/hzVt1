@@ -1,0 +1,78 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+#app {
+  height: 100%;
+}
+.login {
+  width: 100%;
+  height: 100%;
+  background: url(../assets/sign_bg.png) top center;
+  background-size: cover;
+  background-color: #b8e5f8;
+}
+.login-img {
+  text-align: center;
+  padding-top: 60px;
+}
+.login-img img {
+  width: 100px;
+  height: 100px;
+}
+.login-item {
+  display: flex;
+  height: 420px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.loginleft {
+  width: 320px;
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+}
+.loginright {
+  width: 320px;
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+}
+.loginleft-title {
+  line-height: 23px;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 20px;
+}
+.loginleft-erm {
+  margin: 10px;
+}
+.loginleft-erm img {
+  width: 180px;
+  height: 180px;
+}
+.login-right {
+  width: 430px;
+  background-color: #fff;
+}
+.loginleft-message {
+  line-height: 23px;
+  font-weight: 600;
+}
+.loginleft ul {
+  display: flex;
+  margin-top: 20px;
+  list-style: none;
+}
+.loginleft ul li {
+  margin: 0 5px;
+}
+.loginleft .el-button {
+  font-size: 10px;
+}
