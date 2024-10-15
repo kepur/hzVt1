@@ -20,7 +20,6 @@ const router = createRouter({
         {
           path: '/index', //首页
           name: 'index',
-          redirect: '/index/follow',
           component: () => import('../views/IndexView.vue'),
           children: [
             {

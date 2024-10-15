@@ -4,8 +4,10 @@ import HomeHeader from '@/components/HomeHeader.vue'
 <template>
   <div class="common-layout">
     <el-container>
-      <el-header><HomeHeader />Header</el-header>
-      <el-main>Main</el-main>
+      <el-header><HomeHeader /></el-header>
+      <el-main>
+        <RouterView></RouterView>
+      </el-main>
     </el-container>
   </div>
 </template>

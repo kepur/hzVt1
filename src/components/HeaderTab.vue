@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 const useMenus = ref([
-  { name: '首页', url: '/index' },
-  { name: '热帖', url: '/index/follow' },
-  { name: '发现', url: '/index/hotarticle' },
+  { name: '热帖', url: '/index/hotarticle' },
+  { name: '关注', url: '/index/follow' },
   { name: '视频', url: '/index/video' },
+  { name: '搜索', url: '/search' },
 ])
 </script>
 <template>
@@ -23,8 +23,11 @@ const useMenus = ref([
     mode="horizontal"
     router
   >
-    <el-menu-item :index="v.url" v-for="v in useMenus" :key="v.url"
-      >{{ v.name }}{{ v.url }}</el-menu-item
-    >
+    <el-menu-item index="0">
+      <img src="../assets/logo.png" style="width: 60px" />
+    </el-menu-item>
+    <el-menu-item :index="v.url" v-for="v in useMenus" :key="v.url">{{
+      v.name
+    }}</el-menu-item>
   </el-menu>
 </template>

@@ -127,3 +127,87 @@ body {
   border-radius: 50%;
   padding: 5px;
 }
+
+/* 页面头部 */
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #fff;
+  z-index: 999;
+  box-shadow: 0 1px 3px #ddd;
+}
+.appheader {
+  display: flex;
+  align-items: center;
+  max-width: 1280px;
+  min-width: 1000px;
+  margin: auto;
+}
+.el-container .el-header {
+  --el-header-padding: 0px;
+}
+.el-header .el-menu--horizontal {
+  padding-left: 0;
+  border: 0;
+  width: 530px;
+  margin-left: 25px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+/* 搜索框 */
+.header-search {
+  display: flex;
+  max-width: 400px;
+  margin-right: 15px;
+  position: relative;
+}
+.header-search input {
+  width: 380px;
+  height: 34px;
+  padding: 4px 10px;
+  border: 1px solid #eee;
+  background-color: #f8f8fa;
+  border-radius: 999px;
+}
+.header-item {
+  display: flex;
+}
+.header-search svg {
+  border: 0;
+  background: 0;
+  font-weight: 600;
+  color: #9198a4;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+.header-userinfo {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  margin-left: 20px;
+}
+.popover {
+  text-align: center;
+  margin-right: 24px;
+  color: #9198a4;
+  white-space: norap;
+  position: relative;
+}
+.popover p {
+  margin-top: 0; /* 或者根据需要设置其他方向的 margin */
+  margin-bottom: 0; /* 例如：减少上或下的间距 */
+  padding: 0;
+}
+.popover-num {
+  position: absolute;
+  right: -8px;
+  top: -7px;
+  background-color: #d95350;
+  border-radius: 20px;
+  padding: 0 4px;
+  border: 2px solid #fff;
+  transform: scale(0.85);
+}
