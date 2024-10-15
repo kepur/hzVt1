@@ -99,6 +99,7 @@ const onSubmit = () => {
                 type="password"
                 placeholder="确认密码"
               />
+              <el-button type="primary" @click="onSubmit">注册</el-button>
               <p class="agreement">注册既代表同意用户协议</p>
             </el-tab-pane>
           </el-tabs>
