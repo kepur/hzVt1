@@ -256,7 +256,7 @@ body {
   padding: 20px;
   list-style: none;
 }
-.Topstory-content ul li {
+.Topstory-content>ul>li {
   border-bottom: 1px solid #eee;
   padding: 10px 0;
 }
@@ -288,4 +288,20 @@ body {
   overflow: hidden;
   font-size: 14px;
   line-height: 24px;
+}
+.topstory-actions ul{
+  display: flex;
+  padding: 20px 0;
+}
+.topstory-actions ul li{
+  display: flex;
+  text-align: center;
+  margin-right: 25px;
+}
+.icon-text {
+  display: flex;
+  align-items: center; /* 确保图标和文字垂直居中对齐 */
+}
+.icon-text span {
+  margin-left: 8px; /* 根据需要调整图标与文字之间的距离 */
 }
