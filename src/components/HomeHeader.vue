@@ -1,6 +1,8 @@
 <script lang="ts" setup>
+import { useRouter } from 'vue-router'
 import HeaderTab from './HeaderTab.vue'
 import IconIndex from './icons/IconIndex.vue'
+const router = useRouter()
 </script>
 <template>
   <div class="header">
@@ -36,6 +38,29 @@ import IconIndex from './icons/IconIndex.vue'
           <IconIndex name="create" color="#9198a4" width="25px" height="25px">
           </IconIndex>
           <p>创作中心</p>
+        </div>
+        <div class="header-profile">
+          <el-dropdown>
+            <img src="../assets/user.jpg" class="el-dropdown-link" />
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item class="el-dropdown-item"
+                  ><IconIndex
+                    name="profile"
+                    width="25px"
+                    height="25px"
+                  ></IconIndex
+                  >个人中心</el-dropdown-item
+                >
+                <el-dropdown-item
+                  class="el-dropdown-item"
+                  @click="$router.push('/login')"
+                  ><IconIndex name="exit" width="25px" height="25px"></IconIndex
+                  >LoginOut</el-dropdown-item
+                >
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
         </div>
       </div>
     </div>

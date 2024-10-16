@@ -1,7 +1,12 @@
-<script setup lang="ts"></script>
-
+<script setup lang="ts">
+import ContentLeft from './ContentLeft.vue'
+import ContentRight from './ContentRight.vue'
+</script>
 <template>
-  <div class="hotarticle">热门帖子</div>
+  <div class="content">
+    <ContentLeft />
+    <ContentRight />
+  </div>
 </template>
 
 <style scoped></style>
