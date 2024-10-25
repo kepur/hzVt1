@@ -2,7 +2,23 @@
 import { useRouter } from 'vue-router'
 import HeaderTab from './HeaderTab.vue'
 import IconIndex from './icons/IconIndex.vue'
-const router = useRouter()
+import { useAuthStore } from '../stores/auth';
+import { ElMessage } from 'element-plus';
+
+const authStore = useAuthStore();
+const router = useRouter();
+
+// 注销功能
+const logoutUser = async () => {
+  try {
+    await authStore.logout();
+    ElMessage.success('注销成功'); // 注销成功提示
+    router.push('/login'); // 注销成功后重定向到登录页面
+  } catch (error) {
+    ElMessage.error('注销失败，请重试:'+error); // 注销失败提示
+  }
+};
+
 </script>
 <template>
   <div class="header">
@@ -54,7 +70,7 @@ const router = useRouter()
                 >
                 <el-dropdown-item
                   class="el-dropdown-item"
-                  @click="$router.push('/login')"
+                   @click="logoutUser"
                   ><IconIndex name="exit" width="25px" height="25px"></IconIndex
                   >LoginOut</el-dropdown-item
                 >

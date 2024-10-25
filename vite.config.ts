@@ -17,6 +17,9 @@ export default defineConfig({
       symbolId: 'icon-[dir]-[name]',
     }),
   ],
+  define:{
+    __API_BASE_URL__: JSON.stringify('http://127.0.0.1:7788/api/v1/'),  // 定义全局 API 地址
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
