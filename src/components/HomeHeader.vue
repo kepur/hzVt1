@@ -35,25 +35,24 @@ const logoutUser = async () => {
             height="30px"
           ></IconIndex>
         </div>
-        <el-button type="primary" round>提问</el-button>
       </div>
       <div class="header-userinfo">
-        <div class="popover">
+        <!-- <div class="popover">
           <div class="popover-num">10</div>
           <IconIndex name="alert" color="#9198a4" width="25px" height="25px">
           </IconIndex>
           <p>消息</p>
-        </div>
+        </div> -->
         <div class="popover">
           <div class="popover-num">10</div>
-          <IconIndex name="message" color="#9198a4" width="25px" height="25px">
+          <IconIndex name="user_collect" color="#FF69B4" width="30px" height="30px">
           </IconIndex>
-          <p>私信</p>
+          <p>My Collect</p>
         </div>
         <div class="popover">
-          <IconIndex name="create" color="#9198a4" width="25px" height="25px">
+          <IconIndex name="create" color="#FF69B4" width="30px" height="30px">
           </IconIndex>
-          <p>创作中心</p>
+          <p>Create Center</p>
         </div>
         <div class="header-profile">
           <el-dropdown>
@@ -67,6 +66,22 @@ const logoutUser = async () => {
                     height="25px"
                   ></IconIndex
                   >个人中心</el-dropdown-item
+                >
+                <el-dropdown-item class="el-dropdown-item"
+                  ><IconIndex
+                    name="alert"
+                    width="25px"
+                    height="25px"
+                  ></IconIndex
+                  >消息</el-dropdown-item
+                >
+                <el-dropdown-item class="el-dropdown-item"
+                  ><IconIndex
+                    name="message"
+                    width="25px"
+                    height="25px"
+                  ></IconIndex
+                  >群聊</el-dropdown-item
                 >
                 <el-dropdown-item
                   class="el-dropdown-item"

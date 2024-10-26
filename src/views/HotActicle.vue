@@ -8,5 +8,4 @@ import ContentRight from './ContentRight.vue'
     <ContentRight />
   </div>
 </template>
-
 <style scoped></style>

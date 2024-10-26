@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import IndexView from '../views/IndexView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -15,12 +16,12 @@ const router = createRouter({
     {
       path: '/home',
       name: 'home',
-      component: HomeView,
-      children: [
-        {
-          path: '/index', //首页
-          name: 'index',
-          component: () => import('../views/IndexView.vue'),
+      component: () => import('../views/HomeView.vue'),
+    },
+    {
+      path: '/index',
+      name: 'index',
+      component: IndexView,
           children: [
             {
               path: '/index/follow', //关注页面
@@ -37,14 +38,18 @@ const router = createRouter({
               name: 'video',
               component: () => import('../views/VideoView.vue'),
             },
+            {
+              path: '/index/novels', //视频页面
+              name: 'search',
+              component: () => import('../views/NovelView.vue'),
+            },
           ],
-        },
-      ],
     },
+    
     {
-      path: '/search',
-      name: 'search',
-      component: () => import('../views/SearchView.vue'),
+      path: '/other',
+      name: 'other',
+      component: () => import('../views/NovelView.vue'),
     },
     // {
     //   path: '/search',
