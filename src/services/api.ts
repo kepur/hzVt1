@@ -2,9 +2,10 @@
 import axios from 'axios';
 import { useAuthStore } from '../stores/auth';
 import { storeToRefs } from 'pinia';  // 引入 storeToRefs
+import { baseURL_dev } from '@/config/baseURL';
 
 const api = axios.create({
-  baseURL: 'http://127.0.0.1:7788/api/v1/',  // 基础 API 地址
+  baseURL: baseURL_dev,  // 基础 API 地址
 });
 
 // 请求拦截器，自动添加 JWT token 到请求头
