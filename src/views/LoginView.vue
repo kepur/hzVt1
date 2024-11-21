@@ -24,12 +24,12 @@ const submitLogin = async () => {
     }
     await authStore.login(form.username, form.password);
     // 登录成功后显示成功提示，并重定向到受保护页面
-    ElMessage.success('登录成功');  // 添加登录成功提示
+    ElMessage.success('Login successful');  // 添加登录成功提示
     if (authStore.isAuthenticated()) {
       router.push('/index'); // 登录成功后重定向到受保护的页面
     }
   } catch (error) {
-    errorMessage.value = '登录失败，请重试'+error;
+    errorMessage.value = 'login faild，pls retry'+error;
     ElMessage.error(errorMessage.value);  // 使用 ElMessage 弹出提示
 
   }
@@ -39,20 +39,20 @@ const submitLogin = async () => {
 const submitRegister = async () => {
   try {
     if (!form.username || !form.password || !form.confirmPassword) {
-      errorMessage.value = '请完整填写表单';
+      errorMessage.value = 'please complated ur form';
       ElMessage.error(errorMessage.value);  // 使用 ElMessage 弹出提示
       return;
     }
     if (form.password !== form.confirmPassword) {
-      errorMessage.value = '两次密码输入不一致';
+      errorMessage.value = 'plz input same passwd';
       ElMessage.error(errorMessage.value);  // 使用 ElMessage 弹出提示
       return;
     }
     await authStore.register(form.username, form.password);
-    errorMessage.value = '注册成功，请登录';
+    errorMessage.value = 'regist sussful';
     activeName.value = 'first'; // 注册成功后切换到登录 tab
   } catch (error) {
-    errorMessage.value = '注册失败，请重试'+error;
+    errorMessage.value = 'regist faild please retry'+error;
   }
 };
 
@@ -80,15 +80,15 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
     </div>
     <div class="login-item">
       <div class="loginleft">
-        <p class="loginleft-title">打开分享网站</p>
+        <p class="loginleft-title">Share this website</p>
         <div class="loginleft-erm">
           <img src="@/assets/apple.png" />
         </div>
-        <p class="loginleft-message">其他登录方式:APPLE</p>
+        <p class="loginleft-message">Another Login :facebook</p>
         <ul>
-          <li><el-button round>下载知乎</el-button></li>
-          <li><el-button round>开通机构</el-button></li>
-          <li><el-button round>无障碍模式</el-button></li>
+          <li><el-button round>Writte</el-button></li>
+          <li><el-button round>Your</el-button></li>
+          <li><el-button round>Stories</el-button></li>
         </ul>
       </div>
 
@@ -99,16 +99,16 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
             class="demo-tabs"
             @tab-click="handleClick"
           >
-            <el-tab-pane label="账户登录" name="first">
-              <el-input v-model="form.username" placeholder="请输入用户名" />
+            <el-tab-pane label="Account Login" name="first">
+              <el-input v-model="form.username" placeholder="Please input ur name" />
               <el-input
                 v-model="form.password"
                 type="password"
-                placeholder="请输入密码"
+                placeholder="Please input ur password"
               />
-              <el-button type="primary" @click="onSubmit">登录</el-button>
+              <el-button type="primary" @click="onSubmit">Login</el-button>
               <div class="otherwise">
-                <div class="otherwise-title">其他登录方式</div>
+                <div class="otherwise-title">Other Login Methods</div>
                 <ul>
                   <li>
                     <IconIndex
@@ -143,20 +143,20 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
                 </svg> -->
               </div>
             </el-tab-pane>
-            <el-tab-pane label="注册" name="second">
-              <el-input v-model="form.username" placeholder="请输入用户名" />
+            <el-tab-pane label="Register" name="second">
+              <el-input v-model="form.username" placeholder="Plz input ur name" />
               <el-input
                 v-model="form.password"
                 type="password"
-                placeholder="请输入密码"
+                placeholder="Please input ur password"
               />
               <el-input
                 v-model="form.confirmPassword"
                 type="password"
-                placeholder="确认密码"
+                placeholder="Confirm ur password"
               />
-              <el-button type="primary" @click="onSubmit">注册</el-button>
-              <p class="agreement">注册既代表同意用户协议</p>
+              <el-button type="primary" @click="onSubmit">Register</el-button>
+              <p class="agreement">agreement policy</p>
             </el-tab-pane>
           </el-tabs>
         </el-form>

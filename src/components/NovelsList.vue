@@ -8,7 +8,7 @@ import IconIndex from './icons/IconIndex.vue';
         <div>
           <div class="topstory-hd">
             <img src="../assets/user.jpg" />
-            <span>猫先生</span>
+            <span>小说哦</span>
           </div>
           <h3 class="topstory-title">晚上最低价开发哈身边的风景卡洛斯的回复</h3>
           <div class="topstory-articleitem">

@@ -7,6 +7,10 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 
 // https://vite.dev/config/
 export default defineConfig({
+  server: {
+    port: 3000, // 配置启动端口为 3000（根据需求修改）
+    open: true, // 启动时自动打开浏览器
+  },
   plugins: [
     vue(),
     vueJsx(),
@@ -19,6 +23,7 @@ export default defineConfig({
   ],
   define:{
     __API_BASE_URL__: JSON.stringify('http://127.0.0.1:7788/api/v1/'),  // 定义全局 API 地址
+
   },
   resolve: {
     alias: {

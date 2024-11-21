@@ -26,7 +26,7 @@ const logoutUser = async () => {
       <HeaderTab />
       <div class="header-item">
         <div class="header-search">
-          <input type="text" placeholder="请输入搜索内容" />
+          <input type="text" placeholder="Please input ur search" />
           <IconIndex
             class="iconfont icon-sousou"
             name="search"
@@ -65,7 +65,7 @@ const logoutUser = async () => {
                     width="25px"
                     height="25px"
                   ></IconIndex
-                  >个人中心</el-dropdown-item
+                  >Profile</el-dropdown-item
                 >
                 <el-dropdown-item class="el-dropdown-item"
                   ><IconIndex
@@ -73,7 +73,7 @@ const logoutUser = async () => {
                     width="25px"
                     height="25px"
                   ></IconIndex
-                  >消息</el-dropdown-item
+                  >Message</el-dropdown-item
                 >
                 <el-dropdown-item class="el-dropdown-item"
                   ><IconIndex
@@ -81,7 +81,7 @@ const logoutUser = async () => {
                     width="25px"
                     height="25px"
                   ></IconIndex
-                  >群聊</el-dropdown-item
+                  >Chat</el-dropdown-item
                 >
                 <el-dropdown-item
                   class="el-dropdown-item"

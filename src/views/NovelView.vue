@@ -1,5 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import NovelsList from '@/components/NovelsList.vue';
+import ContentRight from './ContentRight.vue'
+</script>
 <template>
-  <div>小说页面</div>
+  <div class="content">
+      <div class="content-left">
+      <NovelsList />
+      </div>
+    <ContentRight />
+  </div>
 </template>
 <style scoped></style>

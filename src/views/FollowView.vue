@@ -1,5 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+import FollowList from '@/components/FollowList.vue';
+</script>
 <template>
-  <div>关注页</div>
+  <div class="content">
+    <FollowList />
+  </div>
 </template>
 <style scoped></style>
