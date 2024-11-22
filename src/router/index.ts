@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import IndexView from '../views/IndexView.vue'
+import { useAuthStore } from '@/stores/auth'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -23,22 +24,22 @@ const router = createRouter({
       component: IndexView,
           children: [
             {
-              path: '/index/follow', //关注页面
+              path: '/index/follow', //
               name: 'follow',
               component: () => import('../views/FollowView.vue'),
             },
             {
-              path: '/index/hotarticle', //热榜帖子页面
+              path: '/index/hotarticle', //
               name: 'hotarticle',
               component: () => import('../views/HotActicle.vue'),
             },
             {
-              path: '/index/video', //视频页面
+              path: '/index/video', //
               name: 'video',
               component: () => import('../views/CreateView.vue'),
             },
             {
-              path: '/index/novels', //视频页面
+              path: '/index/novels', //
               name: 'search',
               component: () => import('../views/NovelView.vue'),
             },
@@ -62,5 +63,17 @@ const router = createRouter({
     // },
   ],
 })
-
+router.beforeEach((to, from, next) => {
+  const authStore = useAuthStore()
+  authStore.loadStoredToken()
+  console.log('开始验证路由')
+  if (!authStore.isAuthenticated() && to.path !== '/login') {
+    return next({ name: 'login' })
+  }
+  // 如果用户已登录且访问登录页面，跳转到首页
+  if (authStore.isAuthenticated() && to.path === '/login') {
+    return next({ name: 'home' })
+  }
+  next()
+})
 export default router

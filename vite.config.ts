@@ -4,12 +4,13 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import { customPort } from './src/services/config' 
 
 // https://vite.dev/config/
 export default defineConfig({
   server: {
-    port: 3000, // 配置启动端口为 3000（根据需求修改）
-    open: true, // 启动时自动打开浏览器
+    port: customPort, 
+    open: true, 
   },
   plugins: [
     vue(),
