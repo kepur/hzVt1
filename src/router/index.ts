@@ -24,23 +24,23 @@ const router = createRouter({
       component: IndexView,
           children: [
             {
-              path: '/index/follow', //
+              path: 'follow', //
               name: 'follow',
               component: () => import('../views/FollowView.vue'),
             },
             {
-              path: '/index/hotarticle', //
+              path: 'hotarticle', //
               name: 'hotarticle',
               component: () => import('../views/HotActicle.vue'),
             },
             {
-              path: '/index/video', //
-              name: 'video',
+              path: 'create', //
+              name: 'create',
               component: () => import('../views/CreateView.vue'),
             },
             {
-              path: '/index/novels', //
-              name: 'search',
+              path: 'novels', //
+              name: 'novels',
               component: () => import('../views/NovelView.vue'),
             },
           ],
@@ -51,29 +51,29 @@ const router = createRouter({
       name: 'other',
       component: () => import('../views/NovelView.vue'),
     },
-    // {
-    //   path: '/search',
-    //   name: 'search',
-    //   component: () => import('../views/LoginView.vue'),
-    // },
-    // {
-    //   path: '/search',
-    //   name: 'search',
-    //   component: () => import('../views/LoginView.vue'),
-    // },
+    {
+      path: '/resource',
+      name: 'resource',
+      component: () => import('../views/ResourceView.vue'),
+    },
+    {
+      path: '/convert',
+      name: 'search',
+      component: () => import('../views/LoginView.vue'),
+    },
   ],
 })
-router.beforeEach((to, from, next) => {
-  const authStore = useAuthStore()
-  authStore.loadStoredToken()
-  console.log('开始验证路由')
-  if (!authStore.isAuthenticated() && to.path !== '/login') {
-    return next({ name: 'login' })
-  }
-  // 如果用户已登录且访问登录页面，跳转到首页
-  if (authStore.isAuthenticated() && to.path === '/login') {
-    return next({ name: 'home' })
-  }
-  next()
-})
+// router.beforeEach((to, from, next) => {
+//   const authStore = useAuthStore()
+//   authStore.loadStoredToken()
+//   console.log('开始验证路由')
+//   if (!authStore.isAuthenticated() && to.path !== '/login') {
+//     return next({ name: 'login' })
+//   }
+//   // 如果用户已登录且访问登录页面，跳转到首页
+//   if (authStore.isAuthenticated() && to.path === '/login') {
+//     return next({ name: 'home' })
+//   }
+//   next()
+// })
 export default router

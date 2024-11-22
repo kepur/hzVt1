@@ -18,7 +18,13 @@ const logoutUser = async () => {
     ElMessage.error('注销失败，请重试:'+error); // 注销失败提示
   }
 };
-
+const createChapter = async () => {
+  try {
+    router.push('/index/create'); // 注销成功后重定向到登录页面
+  } catch (error) {
+    ElMessage.error('注销失败，请重试:'+error); // 注销失败提示
+  }
+};
 </script>
 <template>
   <div class="header">
@@ -49,7 +55,7 @@ const logoutUser = async () => {
           </IconIndex>
           <p>My Collect</p>
         </div>
-        <div class="popover">
+        <div class="popover" @click="createChapter">
           <IconIndex name="create" color="#FF69B4" width="30px" height="30px">
           </IconIndex>
           <p>Create Center</p>
