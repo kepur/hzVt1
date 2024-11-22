@@ -25,6 +25,13 @@ const createChapter = async () => {
     ElMessage.error('注销失败，请重试:'+error); // 注销失败提示
   }
 };
+const userProfie = async () => {
+  try {
+    router.push('/profile'); // 注销成功后重定向到登录页面
+  } catch (error) {
+    ElMessage.error('注销失败，请重试:'+error); // 注销失败提示
+  }
+};
 </script>
 <template>
   <div class="header">
@@ -65,14 +72,14 @@ const createChapter = async () => {
             <img src="../assets/user.jpg" class="el-dropdown-link" />
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item class="el-dropdown-item"
+                <div @click="userProfie"><el-dropdown-item class="el-dropdown-item" 
                   ><IconIndex
                     name="profile"
                     width="25px"
                     height="25px"
                   ></IconIndex
                   >Profile</el-dropdown-item
-                >
+                ></div>
                 <el-dropdown-item class="el-dropdown-item"
                   ><IconIndex
                     name="alert"
