@@ -27,7 +27,21 @@ const createChapter = async () => {
 };
 const userProfie = async () => {
   try {
-    router.push('/profile'); // 注销成功后重定向到登录页面
+    router.push('/index/profile'); // 注销成功后重定向到登录页面
+  } catch (error) {
+    ElMessage.error('注销失败，请重试:'+error); // 注销失败提示
+  }
+};
+const userComment= async () => {
+  try {
+    router.push('/index/comment'); // 注销成功后重定向到登录页面
+  } catch (error) {
+    ElMessage.error('注销失败，请重试:'+error); // 注销失败提示
+  }
+};
+const MyArticle= async () => {
+  try {
+    router.push('/index/myarticle'); // 注销成功后重定向到登录页面
   } catch (error) {
     ElMessage.error('注销失败，请重试:'+error); // 注销失败提示
   }
@@ -80,22 +94,21 @@ const userProfie = async () => {
                   ></IconIndex
                   >Profile</el-dropdown-item
                 ></div>
-                <el-dropdown-item class="el-dropdown-item"
+                <div @click="userComment"><el-dropdown-item class="el-dropdown-item"
                   ><IconIndex
                     name="alert"
                     width="25px"
                     height="25px"
                   ></IconIndex
-                  >Message</el-dropdown-item
-                >
-                <el-dropdown-item class="el-dropdown-item"
+                  >Message</el-dropdown-item></div>
+                  <div @click="MyArticle"><el-dropdown-item class="el-dropdown-item"
                   ><IconIndex
                     name="message"
                     width="25px"
                     height="25px"
                   ></IconIndex
-                  >Chat</el-dropdown-item
-                >
+                  >MyArticle</el-dropdown-item
+                ></div>
                 <el-dropdown-item
                   class="el-dropdown-item"
                    @click="logoutUser"

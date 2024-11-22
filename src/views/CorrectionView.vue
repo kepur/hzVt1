@@ -1,10 +1,10 @@
 <script setup lang="ts">
 
-import FollowList from '@/components/FollowList.vue';
+import CorrectionList from '@/components/CorrectionList.vue';
 </script>
 <template>
   <div class="content">
-    <FollowList />
+    <CorrectionList />
   </div>
 </template>
 <style scoped></style>

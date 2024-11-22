@@ -14,11 +14,6 @@ const router = createRouter({
       component: () => import('../views/LoginView.vue'),
     },
     {
-      path: '/profile',
-      name: 'profile',
-      component: () => import('../views/ProfileView.vue'),
-    },
-    {
       path: '/index',
       name: 'index',
       component: IndexView,
@@ -26,7 +21,7 @@ const router = createRouter({
             {
               path: 'follow', //
               name: 'follow',
-              component: () => import('../views/FollowView.vue'),
+              component: () => import('../views/CorrectionView.vue'),
             },
             {
               path: 'hotarticle', //
@@ -43,14 +38,30 @@ const router = createRouter({
               name: 'novels',
               component: () => import('../views/NovelView.vue'),
             },
+            {
+              path: 'profile',
+              name: 'profile',
+              component: () => import('../views/ProfileView.vue'),
+            },
+            {
+              path: 'correction',
+              name: 'correction',
+              component: () => import('../views/CorrectionView.vue'),
+            },
+            {
+              path: 'comment',
+              name: 'comment',
+              component: () => import('../views/CommentsView.vue'),
+            },
+            {
+              path: 'myarticle',
+              name: 'myarticle',
+              component: () => import('../views/MyChapterView.vue'),
+            },
           ],
     },
     
-    {
-      path: '/other',
-      name: 'other',
-      component: () => import('../views/NovelView.vue'),
-    },
+
     {
       path: '/resource',
       name: 'resource',
