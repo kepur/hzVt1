@@ -74,6 +74,11 @@ const router = createRouter({
               component: () => import('../views/ConvertView.vue'),
             },
             {
+              path: 'correctiondetail',
+              name: 'correctiondetail',
+              component: () => import('../views/CorrectionDetail.vue'),
+            },
+            {
               path: 'search',
               name: 'search',
               component: () => import('../components/SearchResuList.vue'),

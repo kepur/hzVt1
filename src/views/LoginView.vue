@@ -79,7 +79,7 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
       <div class="loginleft">
         <p class="loginleft-title">Share this website</p>
         <div class="loginleft-erm">
-          <img src="@/assets/apple.png" />
+          <img src="@/assets/weblogo.webp" />
         </div>
         <p class="loginleft-message">Another Login :facebook</p>
         <ul>

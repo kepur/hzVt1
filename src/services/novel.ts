@@ -12,7 +12,8 @@ export const updateNovel = (id: number, data: { name: string; description: strin
 export const deleteNovel = (id: number) => api.delete(`/novels/${id}`)
 
 // chapters API
-export const fetchNovelChapters = () => api.get('/novel_chapters')
+export const fetchNovelChapters = () => api.get('/novel_chapters');
+export const fetchChapterDetail = (id: number) => api.get(`/novel_chapters/${id}`);
 export const createNovelChapter = (data: { novel_id: number; title: string; content: string }) =>
   api.post('/novel_chapters', data)
 export const updateNovelChapter = (id: number, data: { title: string; content: string }) =>
@@ -24,3 +25,20 @@ export const fetchNovelStyles = () => api.get('/novel_styles')
 export const createNovelStyle = (data: { name: string }) => api.post('/novel_styles', data)
 export const deleteNovelStyle = (id: number) => api.delete(`/novel_styles/${id}`)
 
+
+
+
+export const fetchChapterBasicDetails = (chapterId: number) =>
+  api.get(`/chapter/${chapterId}/details`);
+
+export const fetchChapterGenerationStatus = (chapterId: number) =>
+  api.get(`/chapter/${chapterId}/generation_status`);
+
+export const fetchAudioStyles = () =>
+  api.get('/audio_styles');
+
+export const fetchSupportedLanguages = () =>
+  api.get('/supported_languages');
+
+export const fetchStableDiffusionParams = () =>
+  api.get('/stable_diffusion_params');
