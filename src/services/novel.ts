@@ -2,6 +2,9 @@ import api from './api'
 
 // Novels API
 export const fetchNovels = () => api.get('/novels')
+// Add the new `getAllNovels` method
+export const getAllNovels = () => api.get('/novels');
+
 export const createNovel = (data: { name: string; description: string; author_id: number }) =>
   api.post('/novels', data)
 export const updateNovel = (id: number, data: { name: string; description: string }) =>
@@ -20,3 +23,4 @@ export const deleteNovelChapter = (id: number) => api.delete(`/novel_chapters/${
 export const fetchNovelStyles = () => api.get('/novel_styles')
 export const createNovelStyle = (data: { name: string }) => api.post('/novel_styles', data)
 export const deleteNovelStyle = (id: number) => api.delete(`/novel_styles/${id}`)
+

@@ -33,9 +33,9 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { fetchUserCollects, deleteUserCollect } from '@/api/userCollectApi'
+import { fetchUserCollections, deleteUserCollection } from '@/services/common'
 import { ElMessage } from 'element-plus'
 import { useRouter } from 'vue-router'
 
@@ -50,7 +50,7 @@ const totalPages = ref(0) // 总页数
 // 获取用户收藏列表
 const getUserCollects = async () => {
   try {
-    const response = await fetchUserCollects({ userId: userId.value, page: page.value, size: pageSize.value })
+    const response = await fetchUserCollections({ userId: userId.value, page: page.value, size: pageSize.value })
     userCollects.value = response.data.collects
     totalCount.value = response.data.total
     totalPages.value = Math.ceil(totalCount.value / pageSize.value)
@@ -68,7 +68,7 @@ const viewNovel = (novelId) => {
 // 删除收藏
 const handleDelete = async (collectId) => {
   try {
-    await deleteUserCollect(collectId)
+    await deleteUserCollection(collectId)
     ElMessage.success('收藏删除成功')
     getUserCollects() // 刷新收藏列表
   } catch (error) {

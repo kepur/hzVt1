@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import ArticleList  from '@/components/ArticleList.vue';
+import ContentList from '@/components/ArticleList.vue'
 </script>
 <template>
   <div class="content-left">
-    <ArticleList />
+    <ContentList />
   </div>
 </template>
 <style scoped></style>

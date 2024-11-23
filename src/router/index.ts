@@ -58,20 +58,29 @@ const router = createRouter({
               name: 'myarticle',
               component: () => import('../views/MyChapterView.vue'),
             },
+            {
+              path: 'collection',
+              name: 'collection',
+              component: () => import('../views/MyCollectView.vue'),
+            },
+            {
+              path: 'chapterdetail',
+              name: 'chapterdetail',
+              component: () => import('../views/ArticleDetail.vue'),
+            },
+            {
+              path: 'convert',
+              name: 'convert',
+              component: () => import('../views/ConvertView.vue'),
+            },
+            {
+              path: 'search',
+              name: 'search',
+              component: () => import('../components/SearchResuList.vue'),
+            },
           ],
     },
-    
 
-    {
-      path: '/resource',
-      name: 'resource',
-      component: () => import('../views/ResourceView.vue'),
-    },
-    {
-      path: '/convert',
-      name: 'search',
-      component: () => import('../views/LoginView.vue'),
-    },
   ],
 })
 // router.beforeEach((to, from, next) => {

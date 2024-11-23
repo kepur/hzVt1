@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 const useMenus = ref([
-  { name: 'Hot Article', url: '/index/hotarticle' },
+  { name: 'HotArticle', url: '/index/hotarticle' },
   { name: 'Novels', url: '/index/novels' },
-  { name: 'Follow', url: '/index/follow' },
+  { name: 'TranslateCorrection', url: '/index/follow' },
   // { name: 'Videos', url: '/index/video' },
 ])
 </script>

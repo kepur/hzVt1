@@ -12,38 +12,45 @@ const router = useRouter();
 const logoutUser = async () => {
   try {
     await authStore.logout();
-    ElMessage.success('注销成功'); // 注销成功提示
-    router.push('/login'); // 注销成功后重定向到登录页面
+    ElMessage.success('Loginout Success'); 
+    router.push('/login');
   } catch (error) {
-    ElMessage.error('注销失败，请重试:'+error); // 注销失败提示
+    ElMessage.error('Loginout Failed:'+error); 
   }
 };
 const createChapter = async () => {
   try {
-    router.push('/index/create'); // 注销成功后重定向到登录页面
+    router.push('/index/create'); 
   } catch (error) {
-    ElMessage.error('注销失败，请重试:'+error); // 注销失败提示
+    ElMessage.error('Loginout Failed:'+error);
   }
 };
 const userProfie = async () => {
   try {
-    router.push('/index/profile'); // 注销成功后重定向到登录页面
+    router.push('/index/profile'); 
   } catch (error) {
-    ElMessage.error('注销失败，请重试:'+error); // 注销失败提示
+    ElMessage.error('Loginout Failed:'+error); 
   }
 };
 const userComment= async () => {
   try {
-    router.push('/index/comment'); // 注销成功后重定向到登录页面
+    router.push('/index/comment'); 
   } catch (error) {
-    ElMessage.error('注销失败，请重试:'+error); // 注销失败提示
+    ElMessage.error('Loginout Failed:'+error); 
   }
 };
 const MyArticle= async () => {
   try {
-    router.push('/index/myarticle'); // 注销成功后重定向到登录页面
+    router.push('/index/myarticle');
   } catch (error) {
-    ElMessage.error('注销失败，请重试:'+error); // 注销失败提示
+    ElMessage.error('Loginout Failed:'+error); 
+  }
+};
+const UserCollection=async () => {
+  try {
+    router.push('/index/collection'); 
+  } catch (error) {
+    ElMessage.error('Loginout Failed，Please Retry:'+error); 
   }
 };
 </script>
@@ -70,11 +77,11 @@ const MyArticle= async () => {
           </IconIndex>
           <p>消息</p>
         </div> -->
-        <div class="popover">
+        <div class="popover" @click="MyArticle">
           <div class="popover-num">10</div>
-          <IconIndex name="user_collect" color="#FF69B4" width="30px" height="30px">
+          <IconIndex name="article" color="#FF69B4" width="30px" height="30px">
           </IconIndex>
-          <p>My Collect</p>
+          <p>My Article</p>
         </div>
         <div class="popover" @click="createChapter">
           <IconIndex name="create" color="#FF69B4" width="30px" height="30px">
@@ -91,6 +98,7 @@ const MyArticle= async () => {
                     name="profile"
                     width="25px"
                     height="25px"
+                    color="red"
                   ></IconIndex
                   >Profile</el-dropdown-item
                 ></div>
@@ -101,13 +109,13 @@ const MyArticle= async () => {
                     height="25px"
                   ></IconIndex
                   >Message</el-dropdown-item></div>
-                  <div @click="MyArticle"><el-dropdown-item class="el-dropdown-item"
+                  <div @click="UserCollection"><el-dropdown-item class="el-dropdown-item"
                   ><IconIndex
-                    name="message"
+                    name="user_collect"
                     width="25px"
                     height="25px"
                   ></IconIndex
-                  >MyArticle</el-dropdown-item
+                  >MyCollect</el-dropdown-item
                 ></div>
                 <el-dropdown-item
                   class="el-dropdown-item"

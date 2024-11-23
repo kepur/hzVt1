@@ -1,42 +1,25 @@
 <template>
-  <el-form :model="chapterForm" ref="chapterForm" label-width="120px" @submit.native.prevent="handleSubmit">
-    <!-- 小说选择 -->
-    <el-form-item label="选择小说" prop="novel_id" :rules="[{ required: true, message: '请选择小说', trigger: 'blur' }]">
-      <el-select v-model="chapterForm.novel_id" placeholder="请选择小说" clearable>
-        <el-option
-          v-for="novel in novels"
-          :key="novel.id"
-          :label="novel.name"
-          :value="novel.id"
-        ></el-option>
-      </el-select>
+  <el-form :model="chapterForm" label-width="120px">
+    <!-- 章节信息 -->
+    <el-form-item label="章节标题">
+      <el-input v-model="chapter.title" disabled></el-input>
     </el-form-item>
 
-    <!-- 章节标题 -->
-    <el-form-item label="章节标题" prop="title" :rules="[{ required: true, message: '请输入章节标题', trigger: 'blur' }]">
-      <el-input v-model="chapterForm.title" placeholder="请输入章节标题" clearable></el-input>
+    <el-form-item label="章节内容">
+      <el-input type="textarea" v-model="chapter.content" disabled></el-input>
     </el-form-item>
 
-    <!-- 章节内容 -->
-    <el-form-item label="章节内容" prop="content" :rules="[{ required: true, message: '请输入章节内容', trigger: 'blur' }]">
-      <md-editor v-model="chapterForm.content" />
+    <!-- 操作按钮 -->
+    <el-form-item>
+      <el-button type="primary" @click="generateAudio">生成语音</el-button>
+      <el-button :disabled="!canGenerateImage" type="success" @click="generateImage">生成图片</el-button>
+      <el-button :disabled="!canGenerateVideo" type="warning" @click="generateVideo">生成视频</el-button>
+      <el-button type="info" @click="translateContent">翻译</el-button>
     </el-form-item>
 
-    <!-- 小说类型 -->
-    <el-form-item label="选择小说类型" prop="novel_styles">
-      <el-select v-model="chapterForm.novel_styles" placeholder="请选择小说类型" multiple clearable>
-        <el-option
-          v-for="style in novelStyles"
-          :key="style.id"
-          :label="style.name"
-          :value="style.id"
-        ></el-option>
-      </el-select>
-    </el-form-item>
-
-    <!-- 语言 -->
-    <el-form-item label="语言" prop="language">
-      <el-select v-model="chapterForm.language" placeholder="请选择语言" clearable>
+    <!-- 翻译语言选择 -->
+    <el-form-item label="翻译语言">
+      <el-select v-model="chapterForm.target_language" placeholder="请选择语言" clearable>
         <el-option
           v-for="language in languages"
           :key="language.id"
@@ -45,94 +28,102 @@
         ></el-option>
       </el-select>
     </el-form-item>
-
-    <!-- 提交按钮 -->
-    <el-form-item>
-      <el-button type="primary" @click="handleSubmit">提交</el-button>
-      <el-button @click="handleCancel">取消</el-button>
-    </el-form-item>
   </el-form>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { fetchNovels, fetchNovelStyles, fetchNovelLanguages, createNovelChapter } from '@/api'; // 修改 API 引用
-import MdEditor from 'md-editor-v3'; // 使用 md-editor-v3
+import {
+  fetchChapterDetails,
+  fetchGeneratedAudios,
+  fetchGeneratedImages,
+  fetchGeneratedVideos,
+  createGeneratedAudio,
+  createGeneratedImage,
+  createGeneratedVideo,
+} from '@/services/novel';
+import { fetchSupportedLanguages } from '@/services/lang';
 
-export default {
-  components: {
-    MdEditor,
-  },
-  setup() {
-    const chapterForm = ref({
-      novel_id: null,
-      title: '',
-      content: '',
-      novel_styles: [],
-      language: null,
-    });
+const chapterId = 1; // 你可以通过路由或页面参数动态获取
+const chapter = ref({
+  title: '',
+  content: '',
+});
+const languages = ref([]);
+const canGenerateImage = ref(false);
+const canGenerateVideo = ref(false);
 
-    const novels = ref([]);
-    const novelStyles = ref([]);
-    const languages = ref([]);
+// 加载章节详情
+const loadChapterDetails = async () => {
+  try {
+    const response = await fetchChapterDetails(chapterId);
+    chapter.value = response.data;
 
-    // 获取小说数据
-    const loadNovels = async () => {
-      const response = await fetchNovels();
-      novels.value = response.data;
-    };
+    // 检查生成状态
+    const audioResponse = await fetchGeneratedAudios({ chapter_id: chapterId });
+    const imageResponse = await fetchGeneratedImages({ chapter_id: chapterId });
+    const videoResponse = await fetchGeneratedVideos({ chapter_id: chapterId });
 
-    // 获取小说类型
-    const loadNovelStyles = async () => {
-      const response = await fetchNovelStyles();
-      novelStyles.value = response.data;
-    };
-
-    // 获取语言列表
-    const loadLanguages = async () => {
-      const response = await fetchNovelLanguages(); // 添加此 API 方法
-      languages.value = response.data;
-    };
-
-    // 页面加载时获取数据
-    onMounted(() => {
-      loadNovels();
-      loadNovelStyles();
-      loadLanguages();
-    });
-
-    // 提交表单
-    const handleSubmit = async () => {
-      try {
-        await createNovelChapter(chapterForm.value);  // 创建小说章节
-        this.$message.success('提交成功');
-        // 清空表单或其他操作
-      } catch (error) {
-        this.$message.error('提交失败');
-      }
-    };
-
-    // 取消提交
-    const handleCancel = () => {
-      chapterForm.value = {
-        novel_id: null,
-        title: '',
-        content: '',
-        novel_styles: [],
-        language: null,
-      };
-    };
-
-    return {
-      chapterForm,
-      novels,
-      novelStyles,
-      languages,
-      handleSubmit,
-      handleCancel,
-    };
-  },
+    canGenerateImage.value = audioResponse.data.length > 0;
+    canGenerateVideo.value = canGenerateImage.value && imageResponse.data.length > 0;
+  } catch (error) {
+    console.error('Failed to load chapter details:', error);
+  }
 };
+
+// 加载支持的翻译语言
+const loadLanguages = async () => {
+  try {
+    const response = await fetchSupportedLanguages();
+    languages.value = response.data;
+  } catch (error) {
+    console.error('Failed to load languages:', error);
+  }
+};
+
+// 生成语音
+const generateAudio = async () => {
+  try {
+    await createGeneratedAudio({ chapter_id: chapterId, audio_style_id: 1 });
+    loadChapterDetails(); // 更新生成状态
+    console.log('Audio generated successfully');
+  } catch (error) {
+    console.error('Failed to generate audio:', error);
+  }
+};
+
+// 生成图片
+const generateImage = async () => {
+  try {
+    await createGeneratedImage({ chapter_id: chapterId });
+    loadChapterDetails(); // 更新生成状态
+    console.log('Image generated successfully');
+  } catch (error) {
+    console.error('Failed to generate image:', error);
+  }
+};
+
+// 生成视频
+const generateVideo = async () => {
+  try {
+    await createGeneratedVideo({ chapter_id: chapterId, language_code: 'en' });
+    loadChapterDetails(); // 更新生成状态
+    console.log('Video generated successfully');
+  } catch (error) {
+    console.error('Failed to generate video:', error);
+  }
+};
+
+// 翻译
+const translateContent = async () => {
+  console.log('Translation functionality is not yet implemented');
+};
+
+// 页面加载时获取数据
+onMounted(() => {
+  loadChapterDetails();
+  loadLanguages();
+});
 </script>
 
 <style scoped>
